@@ -29,6 +29,7 @@ cluster_name=${moniker}${suffix}
 declare -a volumes
 environment=($(cat <<-END
   --env node.name=$es_node_name
+  --env node.roles=data,ingest,master,remote_cluster_client
   --env cluster.name=$cluster_name
   --env cluster.initial_master_nodes=$master_node_name
   --env discovery.seed_hosts=$master_node_name
